@@ -24,15 +24,21 @@ function callApi(url){
         success: function(response){
             console.log(response);
             const error = response.Error;
-            $('#greska').html(error);
+           if (response.Response === "False") {
+                return $('#content').html(`
+                  <h1 class="text-center bg-danger container" >${error}</h1>  `
+                )
+              } 
 
             $('#content').html(`
                 
                 <div id="info">
                 <img src="${response.Poster}">
-                <div>
-                <p>Naslov:<span>${response.Title}</span></p>
-                <p>Godina:<span>${response.Year}</span></p>
+                <div id="text">
+                <p>Naslov:</p>
+                <p>${response.Title}</p>
+                <p>Godina:</p>
+                <p>${response.Year}</p>
                 <p>Datum objavljivanja: ${response.Released}<p/>
                 <p>Trajanje:${response.Runtime}<p/>
                 <p>Režiser:${response.Director}<p/>
@@ -59,9 +65,9 @@ function callApi(url){
                 if (response.Type==="movie") {
                     $("#sezona").html(" ");
                 }
-                },
-        })
-    }
+        }
+    })
+}
 
 
 
