@@ -1,7 +1,7 @@
 .container {
+	padding: 50px;
 	display: grid;
 	grid-row: auto;
-	justify-items: center;
 }
 
 h1 {
@@ -14,9 +14,8 @@ h2 {
 
 form {
 	display: grid;
-
 	grid-gap: 10px;
-	grid-template-columns: 50% 1fr 1fr 1fr;
+	grid-template-columns: repeat(4, 1fr);
 	height: 35px;
 }
 
@@ -28,10 +27,27 @@ button {
 }
 
 button {
-	background-color: lightskyblue;
+	background-color: rgb(134, 134, 134);
 }
-/* 
-#unos-naziva {
-	grid-column: 1;
-	width: 200px;
-} */
+
+#info {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+
+	justify-items: center;
+}
+
+#text {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+#ocjene {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+span {
+	position: relative;
+	left: 50%;
+}

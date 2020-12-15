@@ -18,22 +18,21 @@
             Svi podaci o Vašim omiljenim filmovima i serijama na jednom mjestu!
         </h2>
         <form class="" action="GET">
-            <input id="naziv"  type="text" placeholder="Unesite kriterijum pretrage...">
+            <input id="naziv"  type="text" placeholder="title">
             <select name="type" id="type">
-                <option value="movie">Filmovi</option>
-                <option value="series">Serije</option>
+                <option value="movie">Movies</option>
+                <option value="series">Series</option>
             </select>
-            <input id="year" type="number" placeholder="godina">
-            
-
-            
-                <input type="button" id="btn" placeholder="pretraga" value="pretraga" class="fas fa-film" >
-           
-              
-            
+            <input id="godina" type="text" placeholder="year">
+            <button id="btn" type="button">
+                <i class="fa fa-search">
+                    Pretraga
+                </i>
+            </button>
         </form>
     </div>
     <div id="content">
+    <h3 id="greska" class="text-center bg-danger" ></h3>
 
     </div>
 
