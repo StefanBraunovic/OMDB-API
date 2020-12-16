@@ -1,16 +1,13 @@
 
 $(document).ready(function(){
     $('#btn').click(()=>{
-       
-
-        $("form").submit((e) => {
-            e.preventDefault(); })
-    const newUrl = createURL();
+    
+        const newUrl = getURL();
     callApi(newUrl)
 })
 })
 
-function createURL(){
+function getURL(){
     const title = document.querySelector('#naziv').value;
     const tip = document.querySelector('#type').value;
     const year = document.querySelector('#godina').value;
@@ -30,7 +27,7 @@ function callApi(url){
             const error = response.Error;
            if (response.Response === "False") {
                 return $('#content').html(`
-                  <h1 class="text-center bg-danger container" >${error}</h1>  `
+                  <h1 class="text-center bg-secondary container" >${error}</h1>  `
                 )
               } 
               
