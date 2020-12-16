@@ -2,6 +2,9 @@
 $(document).ready(function(){
     $('#btn').click(()=>{
        
+
+        $("form").submit((e) => {
+            e.preventDefault(); })
     const newUrl = createURL();
     callApi(newUrl)
 })
@@ -23,31 +26,37 @@ function callApi(url){
         url:url,
         success: function(response){
             console.log(response);
+           
             const error = response.Error;
            if (response.Response === "False") {
                 return $('#content').html(`
                   <h1 class="text-center bg-danger container" >${error}</h1>  `
                 )
               } 
-
-            $('#content').html(`
+              
+             $('#content').html(`
                 
-                <div id="info">
-                <img src="${response.Poster}">
+                <div id="info" >
+                <img id="slika" src="${(response.Poster)}">
                 <div id="text">
-                <p>Naslov:</p>
+                <p>Title:</p>
                 <p>${response.Title}</p>
-                <p>Godina:</p>
+                <p>Year:</p>
                 <p>${response.Year}</p>
-                <p>Datum objavljivanja: ${response.Released}<p/>
-                <p>Trajanje:${response.Runtime}<p/>
-                <p>Režiser:${response.Director}<p/>
-                <p>Glumci:${response.Actors}<p/>
-                <p>Radnja:${response.Plot}<p/>
-                <p>
-                </p>
-                <p id="sezona">Broj sezona: ${response.totalSeasons}</p>
-                <p>Ocjene gledalaca:<p>
+                <p>Released:</p>
+                <p>${response.Released}</p>
+                <p>Runtime:</p>
+                <p>${response.Runtime}</p>
+                <p>Director:</p>
+                <p>${response.Director}</p>
+                <p>Actors:</p>
+                <p>${response.Actors}</p>
+                <p>Plot:</p>
+                <p>${response.Plot}</p>
+                <p id="sezona">Ttotal Seasons:</p>
+                <p id="sezona1">${response.totalSeasons}</p>
+                <p></p>
+                <p class="ocjene">Ratings:</p>
                 <div id="ocjene">
                 ${response.Ratings.map((rating) => {
                     return `
@@ -64,6 +73,10 @@ function callApi(url){
                 )
                 if (response.Type==="movie") {
                     $("#sezona").html(" ");
+                    $("#sezona1").html(" ")
+                }
+                if(response.Poster==="N/A"){
+                    $("#slika").attr("src","/img/download.jpg"); 
                 }
         }
     })
