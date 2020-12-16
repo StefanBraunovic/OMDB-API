@@ -73,7 +73,7 @@ function callApi(url){
                     $("#sezona1").html(" ")
                 }
                 if(response.Poster==="N/A"){
-                    $("#slika").attr("src","/img/download.jpg"); 
+                    $("#slika").attr("src","img/download.jpg"); 
                 }
         }
     })
